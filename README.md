@@ -1,2 +1,2 @@
-# job_queue
-Project to load a file to an application using Ruby + Sneakers Gem
+# JobsQueue
+This project is responsible to load a "jobs.txt" file into another application, using [Sneakers Gem](http://sneakers.io/) with [RabbitMQ](www.rabbitmq.com)
