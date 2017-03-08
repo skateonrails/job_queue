@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 require 'spec_helper'
-require 'json'
 
 describe JobLine do
   let(:input) { '1123|Vendedor|3|21/1/2017' }

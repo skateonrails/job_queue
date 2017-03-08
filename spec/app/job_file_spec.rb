@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe JobFile do
-  let(:filepath) { File.join(File.dirname(__FILE__), %w(.. .. file jobs.txt)) }
+  let(:filepath) { File.join(File.dirname(__FILE__), %w(.. file jobs_for_test.txt)) }
   let(:job_file) { JobFile.new(filepath: filepath) }
 
   it 'should act as an array of JobLine objects' do
@@ -21,5 +21,13 @@ describe JobFile do
     expect(first_line.title).to eq('Vendedor')
     expect(first_line.category_id).to eq(3)
     expect(first_line.expires_at).to eq(Date.parse('21/1/2017'))
+  end
+
+  describe '#expires_at_greater_than' do
+    it 'should return lines that expires_at is greater than date passed as argument' do
+      date = Date.parse('20/12/2017')
+      lines = job_file.expires_at_greater_than(date)
+      expect(lines.first.partner_id).to eq(4435)
+    end
   end
 end

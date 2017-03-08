@@ -15,6 +15,10 @@ class JobFile
 
   def_delegators :lines, :each, :first
 
+  def expires_at_greater_than(date)
+    lines.find_all { |job_line| job_line.expires_at > date }
+  end
+
   private
 
   attr_accessor :filepath, :lines

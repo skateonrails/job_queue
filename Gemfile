@@ -6,9 +6,12 @@ gem 'bundler'
 gem 'rspec'
 gem 'sneakers'
 
-# development dependencies
 group :development do
   gem 'overcommit'
   gem 'reek'
   gem 'rubocop'
+end
+
+group :test do
+  gem 'timecop'
 end
