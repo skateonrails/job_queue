@@ -1,15 +1,16 @@
 # frozen_string_literal: true
-# JobImportService is responsible to send the lines to RabbitMQ
+# JobImport is responsible to send the lines to RabbitMQ
 # According to the challenge, it must import lines that expiration_at
-# is greater than import date and it must import only 80% of lines
-# from the file
-class JobImportService
+# is greater than import date.
+class JobImport
   def initialize(job_file:)
     @job_file = job_file
   end
 
   def import
-    lines_to_import
+    lines_to_import.each do |job_line|
+      Message.publish(job_line)
+    end
   end
 
   private
