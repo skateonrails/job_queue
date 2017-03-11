@@ -8,6 +8,7 @@ module Message
   QUEUE_NAME = :job_import
 
   def self.publish(input_line)
-    Sneakers::Publisher.new.publish(input_line.to_json, to_queue: QUEUE_NAME)
+    queue = ENV['QUEUE_NAME'] || QUEUE_NAME
+    Sneakers::Publisher.new.publish(input_line.to_json, to_queue: queue)
   end
 end
