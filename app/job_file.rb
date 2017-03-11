@@ -10,7 +10,7 @@ class JobFile
   HEADER = 'partnerId|title|categoryId|ExpiresAt'
   IMPORT_PERCENTAGE = 0.8
 
-  def initialize(filepath: nil)
+  def initialize(filepath:)
     @filepath = filepath
     @lines = []
   end
