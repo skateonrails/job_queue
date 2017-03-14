@@ -1,9 +1,6 @@
-FROM ruby:2.3-alpine
-
-RUN apk add --no-cache git
-RUN apk --update add --virtual build_deps \
-build-base ruby-dev libc-dev linux-headers \
-openssl-dev
+FROM ruby:2.3-slim
+RUN apt-get update && apt-get install -qq -y --no-install-recommends \
+      build-essential git netcat
 
 RUN mkdir /job_queue
 WORKDIR /job_queue
@@ -14,5 +11,3 @@ RUN gem install bundler
 RUN gem install rake
 RUN bundle install
 ADD . /job_queue
-
-CMD ruby runner.rb
