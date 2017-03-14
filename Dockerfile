@@ -1,12 +1,10 @@
-FROM ruby:2.3-slim
+FROM ruby:2.3-alpine
 
-# set locale
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
-
-RUN apt-get update && apt-get install -qq -y --no-install-recommends \
-      build-essential git netcat
+RUN apk add --update bash && rm -rf /var/cache/apk/*
+RUN apk add --no-cache git
+RUN apk --update add --virtual build_deps \
+build-base ruby-dev libc-dev linux-headers \
+openssl-dev netcat-openbsd
 
 RUN mkdir /job_queue
 WORKDIR /job_queue

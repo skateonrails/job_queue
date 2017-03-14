@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 RABBIT_MQ_HOST="${RABBIT_MQ_HOST:-localhost}"
 RABBIT_MQ_PORT="${RABBIT_MQ_PORT:-5672}"
 
