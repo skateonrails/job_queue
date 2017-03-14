@@ -1,4 +1,10 @@
 FROM ruby:2.3-slim
+
+# set locale
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
       build-essential git netcat
 
